@@ -17,15 +17,17 @@
   // to load this part of the polyfill.
   var element = document.documentElement;
   var animated = true;
+
   try {
     var animation = element.animate({'opacity': ['1', '0']},
         {duration: 1, fill: 'forwards'});
     animation.finish();
     animated = getComputedStyle(element).getPropertyValue('opacity') == '0';
     animation.cancel();
- } catch (err) {
+  } catch (err) {
     animated = false;
- }
+  }
+
   if (animated) {
     return;
   }
